@@ -1,24 +1,18 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Services\Users\User;
 
-use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
+use App\Interfaces\RepositoryInterfaces\Users\User\UserRepositoryInterface;
 use Illuminate\Http\Request;
-use App\Services\{{ folder_path }}{{ class_name }}Service;
 
-class {{ class }} extends Controller
+class UserService extends Controller
 {
-    /**
-     * @var {{ class_name }}Service
-     */
-    private $service;
+    private $repository;
 
-    /**
-     * @param {{ class_name }}Service $service
-     */
-    public function __construct({{ class_name }}Service $service)
+    public function __construct(UserRepositoryInterface $repository)
     {
-        $this->service = $service;
+        $this->repository = $repository;
     }
 
     /**
@@ -41,15 +35,12 @@ class {{ class }} extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        return [
+            'id' => 1
+        ];
     }
 
     /**

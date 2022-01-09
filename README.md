@@ -15,11 +15,15 @@
 - [Laravel API Auth & Sanctum](https://laravel.com/docs/8.x/sanctum)
 
 ### Commands
-- php artisan make:trait
-- php artisan make:service-controller
-- php artisan make:service
-- php artisan make:repository
-- php artisan make:repository-interface
+- php artisan make:trait {name}
+- php artisan make:interface {name}
+
+### Repository Design Pattern Commands
+- php artisan make:service-controller {name}
+- php artisan make:service {name}
+- php artisan make:repository {name}
+- php artisan make:repository-interface {name}
+- **php artisan make:make:csri {name}**
 
 ### File Structure
 ```
@@ -55,6 +59,7 @@
 |   |              |-- PageContentController.php
 |   |        `-- Contact
 |   |           |-- ContactController.php
+|   |       |-- BaseController.php
 |   |
 |   |-- Models
 |   |   `-- Users
@@ -74,6 +79,7 @@
 |   |           |-- PageContent.php
 |   |   `-- Contact
 |   |      |-- Contact.php
+|   |   |-- BaseModel.php
 |   |
 |   |-- Providers
 |   |   |-- AppServiceProvider.php
@@ -97,6 +103,7 @@
 |   |          |-- PageContentService.php
 |   |    `-- Contact
 |   |       |-- ContactService.php
+|   |   |-- BaseService.php
 |   |
 |   |-- Repositories
 |   |    `-- Users
@@ -116,6 +123,7 @@
 |   |          |-- PageContentRepository.php
 |   |    `-- Contact
 |   |       |-- ContactRepository.php
+|   |   |-- BaseRepository.php
 |   |
 |   |-- Interfaces
 |   |    `-- RepositoryInterfaces
@@ -136,10 +144,23 @@
 |   |             |-- PageContentRepositoryInterface.php
 |   |       `-- Contact
 |   |          |-- ContactRepositoryInterface.php
+|   |       |-- BaseRepositoryInterface.php
+|   |   |-- BaseInterface.php
 |   |   
 |   |-- Traits
+|   |   |-- APIResponseTrait.php
 |-- config
 |-- routes
 |   |-- api.php
+|-- resources
+|   `-- lang
+|      `-- en
+|          `-- users
+|              `-- user
+|                  |-- user.php
+|      `-- tr
+|          `-- users
+|              `-- user
+|                  |-- user.php
 
 ```

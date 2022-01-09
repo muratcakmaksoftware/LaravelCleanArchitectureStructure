@@ -1,24 +1,18 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Repositories\Users\User;
 
-use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
+use App\Interfaces\RepositoryInterfaces\Users\User\UserRepositoryInterface;
 use Illuminate\Http\Request;
-use App\Services\{{ folder_path }}{{ class_name }}Service;
 
-class {{ class }} extends Controller
+class UserRepository implements UserRepositoryInterface
 {
-    /**
-     * @var {{ class_name }}Service
-     */
-    private $service;
+    private $model;
 
-    /**
-     * @param {{ class_name }}Service $service
-     */
-    public function __construct({{ class_name }}Service $service)
+    public function __construct(User $model)
     {
-        $this->service = $service;
+        $this->model = $model;
     }
 
     /**
@@ -28,7 +22,7 @@ class {{ class }} extends Controller
      */
     public function index()
     {
-        //
+        return $this->model->create($attributes);
     }
 
     /**

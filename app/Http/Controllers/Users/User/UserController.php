@@ -1,22 +1,25 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Controllers\Users\User;
 
-use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
+use App\Services\Users\User\UserService;
+use App\Traits\APIResponseTrait;
 use Illuminate\Http\Request;
-use App\Services\{{ folder_path }}{{ class_name }}Service;
 
-class {{ class }} extends Controller
+class UserController extends Controller
 {
+    use APIResponseTrait;
+
     /**
-     * @var {{ class_name }}Service
+     * @var UserService
      */
     private $service;
 
     /**
-     * @param {{ class_name }}Service $service
+     * @param UserService $service
      */
-    public function __construct({{ class_name }}Service $service)
+    public function __construct(UserService $service)
     {
         $this->service = $service;
     }
@@ -38,7 +41,7 @@ class {{ class }} extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -49,7 +52,7 @@ class {{ class }} extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->responseStore($this->service->store($request));
     }
 
     /**
