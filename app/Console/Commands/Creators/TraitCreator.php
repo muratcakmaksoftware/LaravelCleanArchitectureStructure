@@ -3,7 +3,6 @@
 namespace App\Console\Commands\Creators;
 
 use Illuminate\Console\GeneratorCommand;
-use Illuminate\Filesystem\Filesystem;
 use function base_path;
 
 class TraitCreator extends GeneratorCommand

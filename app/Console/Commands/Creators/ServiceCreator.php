@@ -3,7 +3,6 @@
 namespace App\Console\Commands\Creators;
 
 use Illuminate\Console\GeneratorCommand;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use function base_path;
 

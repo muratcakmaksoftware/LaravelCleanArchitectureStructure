@@ -16,12 +16,26 @@
 
 ### Commands
 - php artisan make:trait
-
+- php artisan make:service-controller
+- php artisan make:service
+- php artisan make:repository
+- php artisan make:repository-interface
 
 ### File Structure
 ```
 |-- app
 |   |-- Console
+|   |   `-- Commands
+|   |       `-- Creators
+|   |          |-- RepositoryCreator.php
+|   |          |-- TraitCreator.php
+|   |          |-- ...
+|   |       `-- Make
+|   |          |-- CSRIMake.php
+|   |       `-- Queue
+|   |          |-- ...php
+|   |       `-- Migrate
+|   |          |-- ...php
 |   |-- Http
 |   |   `-- Controllers
 |   |        `-- Users

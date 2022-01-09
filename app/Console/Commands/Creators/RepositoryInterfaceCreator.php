@@ -3,7 +3,6 @@
 namespace App\Console\Commands\Creators;
 
 use Illuminate\Console\GeneratorCommand;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use function base_path;
 
@@ -41,10 +40,7 @@ class RepositoryInterfaceCreator extends GeneratorCommand
 
     protected function replaceClass($stub, $name){
         $className = str_replace($this->getNamespace($name).'\\', '', $name);
-        $folderPath = str_replace($className, '', Str::afterLast($name, 'RepositoryInterfaces\\'));
 
-        $stub = str_replace('{{ class }}', $className, $stub);
-        $stub = str_replace('{{ folder_path }}', $folderPath, $stub);
-        return str_replace('{{ class_name }}', str_replace( 'RepositoryInterface', '', $className), $stub);
+        return str_replace('{{ class }}', $className, $stub);
     }
 }
