@@ -2,92 +2,29 @@
 
 namespace App\Repositories\Users\User;
 
-use App\Http\Controllers\Controller;
 use App\Interfaces\RepositoryInterfaces\Users\User\UserRepositoryInterface;
-use Illuminate\Http\Request;
+use App\Models\Users\User\User;
+use App\Repositories\BaseRepository;
+use Illuminate\Support\Collection;
 
-class UserRepository implements UserRepositoryInterface
+class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
-    private $model;
 
+    /**
+     * UserRepository constructor.
+     *
+     * @param User $model
+     */
     public function __construct(User $model)
     {
-        $this->model = $model;
+        parent::__construct($model);
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return Collection
      */
-    public function index()
+    public function all(): Collection
     {
-        return $this->model->create($attributes);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $this->model->all();
     }
 }

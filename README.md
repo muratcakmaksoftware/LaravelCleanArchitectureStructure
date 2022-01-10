@@ -13,10 +13,12 @@
 
 ## Packages
 - [Laravel API Auth & Sanctum](https://laravel.com/docs/8.x/sanctum)
+- [Laravel Enum](https://github.com/BenSampo/laravel-enum)
 
 ### Commands
 - php artisan make:trait {name}
 - php artisan make:interface {name}
+- php artisan make:enum {name}
 
 ### Repository Design Pattern Commands
 - php artisan make:service-controller {name}

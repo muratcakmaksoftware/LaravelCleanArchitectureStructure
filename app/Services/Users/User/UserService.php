@@ -4,15 +4,15 @@ namespace App\Services\Users\User;
 
 use App\Http\Controllers\Controller;
 use App\Interfaces\RepositoryInterfaces\Users\User\UserRepositoryInterface;
+use App\Services\BaseService;
 use Illuminate\Http\Request;
 
-class UserService extends Controller
+class UserService extends BaseService
 {
-    private $repository;
 
     public function __construct(UserRepositoryInterface $repository)
     {
-        $this->repository = $repository;
+        parent::__construct($repository);
     }
 
     /**
@@ -22,7 +22,7 @@ class UserService extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
