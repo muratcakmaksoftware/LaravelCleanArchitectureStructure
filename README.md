@@ -42,9 +42,16 @@
 |   |          |-- ...php
 |   |       `-- Migrate
 |   |          |-- ...php
+|   |-- Enums
+|   |   `-- Languages
+|   |      `-- Users
+|   |         `-- User
+|   |            |-- UserLanguageFile.php
+|   |-- Exceptions
+|   |   |-- Handler.php
 |   |-- Http
 |   |   `-- Controllers
-|   |        `-- Users
+|   |       `-- Users
 |   |           `-- User 
 |   |              |-- UserController.php
 |   |           `-- UserAddress 
@@ -62,6 +69,10 @@
 |   |        `-- Contact
 |   |           |-- ContactController.php
 |   |       |-- BaseController.php
+|   |
+|   |   `-- Requests
+|   |       `-- Auth
+|   |           |-- LoginAuthRequest.php
 |   |
 |   |-- Models
 |   |   `-- Users
