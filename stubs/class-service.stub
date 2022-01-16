@@ -3,13 +3,18 @@
 namespace {{ namespace }};
 
 use {{ rootNamespace }}Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Interfaces\RepositoryInterfaces\{{ folder_path }}{{ class_name }}RepositoryInterface;
 
 class {{ class }} extends Controller
 {
+    /**
+     * @var {{ class_name }}RepositoryInterface
+     */
     private $repository;
 
+    /**
+     * @param {{ class_name }}RepositoryInterface $repository
+     */
     public function __construct({{ class_name }}RepositoryInterface $repository)
     {
         $this->repository = $repository;
@@ -25,7 +30,7 @@ class {{ class }} extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(array $attributes)
     {
 
     }
@@ -40,7 +45,7 @@ class {{ class }} extends Controller
 
     }
 
-    public function update(Request $request, $id)
+    public function update(array $attributes, $id)
     {
 
     }

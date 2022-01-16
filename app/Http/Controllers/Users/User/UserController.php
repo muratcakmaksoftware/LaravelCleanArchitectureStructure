@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users\User;
 use App\Http\Controllers\Controller;
 use App\Services\Users\User\UserService;
 use App\Traits\APIResponseTrait;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -45,14 +46,12 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        $this->responseStore($this->service->store($request));
+        return $this->responseStore($this->service->store($request));
     }
 
     /**

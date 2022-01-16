@@ -2,9 +2,9 @@
 
 namespace {{ namespace }};
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseRequest;
 
-class {{ class }} extends FormRequest
+class {{ class }} extends BaseRequest
 {
     /**
      * @return string[]

@@ -27,14 +27,14 @@ class BaseRepository implements BaseRepositoryInterface
      *
      * @return Model
      */
-    public function create(array $attributes): Model
+    public function store(array $attributes): Model
     {
         return $this->model->create($attributes);
     }
 
     /**
      * @param $id
-     * @return Model
+     * @return null|Model
      */
     public function find($id): ?Model
     {

@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(RepositoryServiceProvider::class);
+        $this->app->register(RepositoryServiceProvider::class); //or You can want to add app.php. // app.php den providers kismina da eklenebilir ancak eklenenleri gormek icindir.
     }
 
     /**

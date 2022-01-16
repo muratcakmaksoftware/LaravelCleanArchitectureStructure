@@ -10,7 +10,7 @@ interface BaseRepositoryInterface
      * @param array $attributes
      * @return Model
      */
-    public function create(array $attributes): Model;
+    public function store(array $attributes): Model;
 
     /**
      * @param $id
