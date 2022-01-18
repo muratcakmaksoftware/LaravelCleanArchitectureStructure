@@ -70,11 +70,11 @@ trait APIResponseTrait
 
     /**
      * @param int $statusCode
-     * @param array $attributes
+     * @param array|null $attributes
      * @param string $message
      * @return JsonResponse
      */
-    public function response(int $statusCode, array $attributes, string $message): JsonResponse
+    public function response(int $statusCode, ?array $attributes, string $message): JsonResponse
     {
         return response()->json([
             'message' => $message,

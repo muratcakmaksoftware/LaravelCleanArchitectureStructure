@@ -28,7 +28,12 @@ class AuthController extends Controller
         $this->service = $service;
     }
 
-    public function login(LoginAuthRequest $request)
+    /**
+     * @param LoginAuthRequest $request
+     * @return JsonResponse
+     * @throws BindingResolutionException
+     */
+    public function login(LoginAuthRequest $request): JsonResponse
     {
         $user = $this->service->login($request->all());
         if($user){
@@ -51,5 +56,14 @@ class AuthController extends Controller
             return $this->responseSuccess($user);
         }
         return $this->responseError();
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function logout(): JsonResponse
+    {
+        $this->service->logout();
+        return $this->responseSuccess(null, );
     }
 }

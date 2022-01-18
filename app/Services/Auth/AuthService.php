@@ -55,4 +55,12 @@ class AuthService extends Controller
     {
          return $user->createToken(env('APP_NAME'))->plainTextToken;
     }
+
+    /**
+     * @return int
+     */
+    public function logout(): int
+    {
+        return auth()->user()->tokens()->delete();
+    }
 }
