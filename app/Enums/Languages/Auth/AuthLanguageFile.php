@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums\Languages\Users\User;
+namespace App\Enums\Languages\Auth;
 
 use BenSampo\Enum\Enum;
 

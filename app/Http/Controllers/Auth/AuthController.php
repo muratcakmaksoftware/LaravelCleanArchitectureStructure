@@ -41,7 +41,7 @@ class AuthController extends Controller
                 'user' => $user
             ]);
         }
-        return $this->responseError();
+        return $this->responseBadRequest();
     }
 
     /**
@@ -55,7 +55,7 @@ class AuthController extends Controller
         if ($user) {
             return $this->responseSuccess($user);
         }
-        return $this->responseError();
+        return $this->responseBadRequest();
     }
 
     /**
@@ -64,6 +64,14 @@ class AuthController extends Controller
     public function logout(): JsonResponse
     {
         $this->service->logout();
-        return $this->responseSuccess(null, );
+        return $this->responseSuccess();
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function unauthorized(): JsonResponse
+    {
+        return $this->responseUnauthorized();
     }
 }

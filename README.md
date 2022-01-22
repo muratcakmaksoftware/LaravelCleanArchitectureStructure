@@ -10,6 +10,7 @@
 
 ## Standards
 - (EN) [PHP PSR STANDARTS](https://medium.com/solvup-tech/php-best-practices-with-psr-standards-d960498e1cd0) - (TR) [PHP PSR STANDARTS](https://umitarpat.medium.com/nedir-bu-php-psr-standartlar%C4%B1-psr-1-psr-2-psr-3-6b7ebe55ba94)
+- (EN) [HTTP STATUS CODE](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) - (TR) [HTTP STATUS CODE](https://tr.wikipedia.org/wiki/HTTP_durum_kodlar%C4%B1)  
 
 ## Packages
 - [Laravel API Auth & Sanctum](https://laravel.com/docs/8.x/sanctum)
@@ -49,6 +50,10 @@
 |   |            |-- UserLanguageFile.php
 |   |-- Exceptions
 |   |   |-- Handler.php
+|   |
+|   |-- Helpers
+|   |   |-- helpers.php
+|   |
 |   |-- Http
 |   |   `-- Controllers
 |   |       `-- Users
@@ -69,6 +74,9 @@
 |   |        `-- Contact
 |   |           |-- ContactController.php
 |   |       |-- BaseController.php
+|   |
+|   |   `-- Middleware
+|   |           |-- Authenticate.php //Unauthorized 
 |   |
 |   |   `-- Requests
 |   |       `-- Auth

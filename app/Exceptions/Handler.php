@@ -64,7 +64,7 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         if($exception instanceof ValidationException){
-            return $this->responseError($exception->validator->getMessageBag()->toArray());
+            return $this->responseBadRequest($exception->validator->getMessageBag()->toArray());
         }
 
         return parent::render($request, $exception);
