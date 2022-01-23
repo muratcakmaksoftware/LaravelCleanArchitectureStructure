@@ -2,6 +2,7 @@
 - Laravel Version: 8.77.1
 - Laravel Installer Version: 4.2.9
 - PHP Version : 7.3.27 ~ 7.4.27
+- [Postman Document](https://documenter.getpostman.com/view/14752307/UVXqEYaK)
 
 ## Design Patterns
 - (EN) [Laravel Best Practices](https://github.com/alexeymezenin/laravel-best-practices) - (TR) [Laravel Best Practices](https://github.com/alexeymezenin/laravel-best-practices/blob/master/turkish.md)
@@ -27,6 +28,9 @@
 - php artisan make:repository {name}
 - php artisan make:repository-interface {name}
 - **php artisan make:make:csri {name}**
+
+### Utils
+- [Postman Scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/)
 
 ### File Structure
 ```

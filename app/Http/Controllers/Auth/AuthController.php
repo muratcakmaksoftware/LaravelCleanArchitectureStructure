@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginAuthRequest;
 use App\Http\Requests\Auth\RegisterAuthRequest;
-use App\Interfaces\RepositoryInterfaces\Users\User\UserRepositoryInterface;
 use App\Services\Auth\AuthService;
 use App\Traits\APIResponseTrait;
 use Illuminate\Contracts\Container\BindingResolutionException;
@@ -73,5 +72,15 @@ class AuthController extends Controller
     public function unauthorized(): JsonResponse
     {
         return $this->responseUnauthorized();
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function authorizedCheck(): JsonResponse
+    {
+        return $this->responseSuccess([
+            'status' => $this->service->authorizedCheck()
+        ]);
     }
 }

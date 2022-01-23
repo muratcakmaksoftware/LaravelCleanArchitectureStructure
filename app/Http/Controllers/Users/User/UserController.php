@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        dd('testindex');
     }
 
     /**
@@ -51,7 +51,7 @@ class UserController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        return $this->responseStore($this->service->store($request));
+        return $this->responseStore($this->service->store($request->all()));
     }
 
     /**

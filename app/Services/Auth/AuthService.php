@@ -18,6 +18,10 @@ class AuthService extends Controller
      */
     public function login(array $attributes)
     {
+        if(auth('sanctum')->check()){
+            auth('sanctum')->user()->currentAccessToken()->delete();
+        }
+
         $user = app()->make(UserRepositoryInterface::class)->getUserByEmail($attributes['email'], ['id', 'name', 'email', 'password']);
         if($user){
             if(Hash::check($attributes['password'], $user->password)){
@@ -62,5 +66,13 @@ class AuthService extends Controller
     public function logout(): int
     {
         return auth()->user()->tokens()->delete();
+    }
+
+    /**
+     * @return bool
+     */
+    public function authorizedCheck(): bool
+    {
+        return auth('sanctum')->check();
     }
 }
