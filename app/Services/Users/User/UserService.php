@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Interfaces\RepositoryInterfaces\Users\User\UserRepositoryInterface;
 use App\Services\BaseService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserService extends BaseService
 {
@@ -31,6 +32,7 @@ class UserService extends BaseService
      */
     public function store(array $attributes)
     {
+        $attributes['password'] = Hash::make($attributes['password']);
         return $this->repository->store($attributes);
     }
 
@@ -44,13 +46,21 @@ class UserService extends BaseService
         //
     }
 
-    public function update(Request $request, $id)
+    public function update(array $attributes, $id)
     {
-        //
+        if(isset($attributes['password'])){
+            $attributes['password'] = Hash::make($attributes['password']);
+        }
+
+        return $this->repository->update($attributes, $id);
     }
 
-    public function destroy($id)
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function destroy($id): bool
     {
-        //
+        return $this->repository->destroy($id);
     }
 }

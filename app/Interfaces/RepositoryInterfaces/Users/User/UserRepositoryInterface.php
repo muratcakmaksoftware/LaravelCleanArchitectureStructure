@@ -14,7 +14,8 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
     public function all(): Collection;
 
     /**
-     * @return Collection
+     * @param string $email
+     * @return Model|null
      */
     public function getUserByEmail(string $email): ?Model;
 }

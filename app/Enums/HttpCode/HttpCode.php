@@ -6,7 +6,7 @@ use BenSampo\Enum\Enum;
 
 final class HttpCode extends Enum
 {
-    const STORE = 601;
-    const UPDATE = 602;
-    const DESTROY = 603;
+    const STORE = 600;
+    const UPDATE = 601;
+    const DESTROY = 602;
 }

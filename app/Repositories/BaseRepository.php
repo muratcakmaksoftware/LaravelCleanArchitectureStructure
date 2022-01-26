@@ -33,6 +33,37 @@ class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
+     * @param array $attributes
+     * @param $id
+     * @return bool
+     */
+    public function update(array $attributes, $id): bool
+    {
+        $model = $this->getById($id);
+        return $model->update($attributes);
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function destroy($id): bool
+    {
+        $model = $this->getById($id, ['id']);
+        return $model->delete();
+    }
+
+    /**
+     * @param $id
+     * @param array $columns
+     * @return Model
+     */
+    public function getById($id, array $columns = ['*']): Model
+    {
+        return $this->model->select($columns)->where('id', $id)->firstOrFail();
+    }
+
+    /**
      * @param $id
      * @return null|Model
      */

@@ -4,6 +4,10 @@
 - PHP Version : 7.3.27 ~ 7.4.27
 - [Postman Document](https://documenter.getpostman.com/view/14752307/UVXqEYaK)
 
+## Installation
+- Clone project.
+- php artisan migrate
+
 ## Design Patterns
 - (EN) [Laravel Best Practices](https://github.com/alexeymezenin/laravel-best-practices) - (TR) [Laravel Best Practices](https://github.com/alexeymezenin/laravel-best-practices/blob/master/turkish.md)
 - (EN) [Laravel Repository Pattern](https://asperbrothers.com/blog/implement-repository-pattern-in-laravel/) - (TR) [Laravel Repository Pattern](https://sosi.work/laravelde-repository-pattern-kullanimi)

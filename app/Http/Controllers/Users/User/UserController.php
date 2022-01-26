@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Users\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\User\StoreUserRequest;
+use App\Http\Requests\Users\User\UpdateUserRequest;
 use App\Services\Users\User\UserService;
 use App\Traits\APIResponseTrait;
 use Illuminate\Http\JsonResponse;
@@ -46,12 +48,16 @@ class UserController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param StoreUserRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(StoreUserRequest $request): JsonResponse
     {
-        return $this->responseStore($this->service->store($request->all()));
+        $user = $this->service->store($request->all());
+        if(isset($user)){
+            return $this->responseStore();
+        }
+        return $this->responseBadRequest();
     }
 
     /**
@@ -77,25 +83,27 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UpdateUserRequest $request
+     * @param $id
+     * @return JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id): JsonResponse
     {
-        //
+        if($this->service->update($request->all(), $id)){
+            return $this->responseUpdate();
+        }
+        return $this->responseBadRequest();
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy($id): JsonResponse
     {
-        //
+        if($this->service->destroy($id)){
+            return $this->responseDestroy();
+        }
+        return $this->responseBadRequest();
     }
 }
