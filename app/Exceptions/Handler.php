@@ -2,10 +2,13 @@
 
 namespace App\Exceptions;
 
+use App\Enums\Languages\General\GeneralLanguageFile;
 use App\Traits\APIResponseTrait;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
@@ -45,29 +48,32 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * @param Throwable $exception
+     * @param Throwable $e
      * @return void
      * @throws Throwable
      */
-    public function report(Throwable $exception)
+    public function report(Throwable $e)
     {
-        ///dd($exception);
-        parent::report($exception);
+        parent::report($e);
     }
 
     /**
      * @param $request
-     * @param Throwable $exception
+     * @param Throwable $e
      * @return JsonResponse|Response|\Symfony\Component\HttpFoundation\Response
      * @throws Throwable
      */
-    public function render($request, Throwable $exception)
+    public function render($request, Throwable $e)
     {
-        if($exception instanceof ValidationException){
-            return $this->responseBadRequest($exception->validator->getMessageBag()->toArray());
+        if($e instanceof ValidationException){
+            return $this->responseBadRequest($e->validator->getMessageBag()->toArray());
         }
 
-        return parent::render($request, $exception);
+        if($e instanceof ModelNotFoundException){
+            return $this->responseInternalServerError(null, translation(GeneralLanguageFile::EXCEPTION, 'ModelNotFoundException', ['model' => Str::afterLast($e->getModel(), '\\')]));
+        }
+
+        return parent::render($request, $e);
     }
 
 }

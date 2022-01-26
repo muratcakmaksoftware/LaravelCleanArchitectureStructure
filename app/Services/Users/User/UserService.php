@@ -41,9 +41,15 @@ class UserService extends BaseService
         //
     }
 
-    public function edit($id)
+    /**
+     * @param $id
+     * @return array
+     */
+    public function edit($id): array
     {
-        //
+        return [
+            'user' => $this->repository->getById($id)
+        ];
     }
 
     public function update(array $attributes, $id)

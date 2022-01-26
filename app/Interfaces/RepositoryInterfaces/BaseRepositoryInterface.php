@@ -3,6 +3,7 @@
 namespace App\Interfaces\RepositoryInterfaces;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 interface BaseRepositoryInterface
 {
@@ -33,10 +34,10 @@ interface BaseRepositoryInterface
     public function getById($id, array $columns = ['*']): Model;
 
     /**
-     * @param $id
-     * @return Model
+     * @param array $columns
+     * @return Collection
      */
-    public function find($id): ?Model;
+    public function all(array $columns = ['*']): Collection;
 }
 
 /**

@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\RepositoryInterfaces\BaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 class BaseRepository implements BaseRepositoryInterface
 {
@@ -39,7 +40,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     public function update(array $attributes, $id): bool
     {
-        $model = $this->getById($id);
+        $model = $this->getById($id); //for observe event
         return $model->update($attributes);
     }
 
@@ -49,7 +50,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     public function destroy($id): bool
     {
-        $model = $this->getById($id, ['id']);
+        $model = $this->getById($id, ['id']); //for observe event
         return $model->delete();
     }
 
@@ -64,11 +65,11 @@ class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
-     * @param $id
-     * @return null|Model
+     * @param array $columns
+     * @return Collection
      */
-    public function find($id): ?Model
+    public function all(array $columns = ['*']): Collection
     {
-        return $this->model->find($id);
+        return $this->model->all($columns);
     }
 }

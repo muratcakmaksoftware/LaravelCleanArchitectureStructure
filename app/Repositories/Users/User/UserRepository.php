@@ -22,14 +22,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     }
 
     /**
-     * @return Collection
-     */
-    public function all(): Collection
-    {
-        return $this->model->all();
-    }
-
-    /**
      * @param string $email
      * @param string $password
      * @return null|Model

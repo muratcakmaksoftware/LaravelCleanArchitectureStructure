@@ -9,11 +9,6 @@ use Illuminate\Support\Collection;
 interface UserRepositoryInterface extends BaseRepositoryInterface
 {
     /**
-     * @return Collection
-     */
-    public function all(): Collection;
-
-    /**
      * @param string $email
      * @return Model|null
      */
