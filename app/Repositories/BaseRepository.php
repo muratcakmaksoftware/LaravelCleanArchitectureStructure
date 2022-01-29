@@ -4,7 +4,9 @@ namespace App\Repositories;
 
 use App\Interfaces\RepositoryInterfaces\BaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
+use Yajra\DataTables\Facades\DataTables;
 
 class BaseRepository implements BaseRepositoryInterface
 {
@@ -56,11 +58,23 @@ class BaseRepository implements BaseRepositoryInterface
 
     /**
      * @param $id
+     * @return bool|null
+     */
+    public function restore($id): ?bool
+    {
+        $model = $this->getById($id, ['id'], true); //for observe event
+        return $model->restore();
+    }
+
+    /**
+     * @param $id
      * @param array $columns
+     * @param bool $onlyTrashed
      * @return Model
      */
-    public function getById($id, array $columns = ['*']): Model
+    public function getById($id, array $columns = ['*'], bool $onlyTrashed = false): Model
     {
+        $this->model = $onlyTrashed ? $this->model->onlyTrashed() : $this->model;
         return $this->model->select($columns)->where('id', $id)->firstOrFail();
     }
 
@@ -71,5 +85,26 @@ class BaseRepository implements BaseRepositoryInterface
     public function all(array $columns = ['*']): Collection
     {
         return $this->model->all($columns);
+    }
+
+    /**
+     * @param array $columns
+     * @param bool $onlyTrashed
+     * @return JsonResponse
+     */
+    public function defaultDatatables(array $columns = ['*']): JsonResponse
+    {
+        $query = $this->model->select($columns);
+        return DataTables::eloquent($query)->toJson();
+    }
+
+    /**
+     * @param array $columns
+     * @return JsonResponse
+     */
+    public function defaultTrashedDatatables(array $columns = ['*']): JsonResponse
+    {
+        $query = $this->model->onlyTrashed()->select($columns);
+        return DataTables::eloquent($query)->toJson();
     }
 }

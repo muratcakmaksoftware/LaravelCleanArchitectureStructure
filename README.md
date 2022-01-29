@@ -193,3 +193,8 @@
 |                  |-- user.php
 
 ```
+
+### Special naming conventions
+ What      | How                                                                                                                                     |
+-----------|-----------------------------------------------------------------------------------------------------------------------------------------|
+ Migration | create_tableName_table<br />add_columnName_to_tablename_table<br />update_columnName_to_tablename_table<br />remove_columnName_from_tablename_table<br />drop_tableName_table |

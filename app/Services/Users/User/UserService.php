@@ -5,6 +5,7 @@ namespace App\Services\Users\User;
 use App\Http\Controllers\Controller;
 use App\Interfaces\RepositoryInterfaces\Users\User\UserRepositoryInterface;
 use App\Services\BaseService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -68,5 +69,36 @@ class UserService extends BaseService
     public function destroy($id): bool
     {
         return $this->repository->destroy($id);
+    }
+
+    /**
+     * @param $id
+     * @return bool|null
+     */
+    public function restore($id): ?bool
+    {
+        return $this->repository->restore($id);
+    }
+
+    /**
+     * @param array $columns
+     * @return array
+     */
+    public function defaultDatatables(array $columns = ['*']): array
+    {
+        return [
+            'datatables' => $this->repository->defaultDatatables($columns)
+        ];
+    }
+
+    /**
+     * @param array $columns
+     * @return array
+     */
+    public function trashedDatatables(array $columns = ['*']): array
+    {
+        return [
+            'datatables' => $this->repository->defaultTrashedDatatables($columns)
+        ];
     }
 }

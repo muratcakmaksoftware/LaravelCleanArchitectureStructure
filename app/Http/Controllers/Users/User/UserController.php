@@ -83,4 +83,32 @@ class UserController extends Controller
         }
         return $this->responseBadRequest();
     }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
+    public function restore($id): JsonResponse
+    {
+        if($this->service->restore($id)){
+            return $this->responseRestore();
+        }
+        return $this->responseBadRequest();
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function datatables(): JsonResponse
+    {
+        return $this->responseSuccess($this->service->defaultDatatables(['id', 'email', 'name']));
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function trashedDatatables(): JsonResponse
+    {
+        return $this->responseSuccess($this->service->trashedDatatables(['id', 'email', 'name']));
+    }
 }

@@ -18,4 +18,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum'], function(){
     });
 
     Route::resource("users", UserController::class)->only(['index', 'edit', 'store', 'update', 'destroy']);
+    Route::put("users/{user}/restore", [UserController::class, 'restore'])->name('users.restore');
+    Route::get("users/datatables", [UserController::class, 'datatables'])->name('users.datatables');
+    Route::get("users/trashed-datatables", [UserController::class, 'trashedDatatables'])->name('users.trashed_datatables');
 });

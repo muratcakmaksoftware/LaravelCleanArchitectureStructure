@@ -9,4 +9,5 @@ return [
     600 => 'Successfully Saved',
     601 => 'Successfully Updated',
     602 => 'Successfully Deleted',
+    603 => 'Successfully Restored',
 ];

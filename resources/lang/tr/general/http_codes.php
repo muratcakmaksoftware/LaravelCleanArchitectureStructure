@@ -9,4 +9,5 @@ return [
     600 => 'Başarıyla Kaydedildi',
     601 => 'Başarıyla Güncellendi',
     602 => 'Başarıyla Silindi',
+    603 => 'Başarıyla Kurtarıldı',
 ];

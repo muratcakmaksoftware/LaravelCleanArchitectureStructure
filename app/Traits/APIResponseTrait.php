@@ -55,6 +55,16 @@ trait APIResponseTrait
      * @param string|null $message
      * @return JsonResponse
      */
+    public function responseRestore(array $attributes = null, string $message = null): JsonResponse
+    {
+        return $this->response(Response::HTTP_OK, $attributes, $message ?? translation(GeneralLanguageFile::HTTP_CODES, HttpCode::RESTORE));
+    }
+
+    /**
+     * @param array|null $attributes
+     * @param string|null $message
+     * @return JsonResponse
+     */
     public function responseBadRequest(array $attributes = null, string $message = null): JsonResponse
     {
         return $this->response(Response::HTTP_BAD_REQUEST, $attributes, $message ?? translation(GeneralLanguageFile::HTTP_CODES, Response::HTTP_BAD_REQUEST));

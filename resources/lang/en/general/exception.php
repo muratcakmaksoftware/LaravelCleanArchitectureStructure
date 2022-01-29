@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'ModelNotFoundException' => ':model model\'s id  not found',
+    'ModelNotFoundException' => ':model model\'s id not found',
 ];

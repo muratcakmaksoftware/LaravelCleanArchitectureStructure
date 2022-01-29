@@ -3,6 +3,7 @@
 namespace App\Interfaces\RepositoryInterfaces;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
 
 interface BaseRepositoryInterface
@@ -28,6 +29,12 @@ interface BaseRepositoryInterface
 
     /**
      * @param $id
+     * @return bool|null
+     */
+    public function restore($id): ?bool;
+
+    /**
+     * @param $id
      * @param array $columns
      * @return Model
      */
@@ -38,6 +45,18 @@ interface BaseRepositoryInterface
      * @return Collection
      */
     public function all(array $columns = ['*']): Collection;
+
+    /**
+     * @param array $columns
+     * @return JsonResponse
+     */
+    public function defaultDatatables(array $columns = ['*']): JsonResponse;
+
+    /**
+     * @param array $columns
+     * @return JsonResponse
+     */
+    public function defaultTrashedDatatables(array $columns = ['*']): JsonResponse;
 }
 
 /**
