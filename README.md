@@ -38,6 +38,25 @@
 
 ### File Structure
 ```
+|   |   `-- Group Name Folder
+|   |       `-- Create Name Folder
+|   |          |-- Create Name File.php
+|   |   `-- Single Name Folder
+|   |       |-- Create Name File.php
+
+|   |-- Http
+|   |   `-- Controllers
+|   |       `-- Users <Group Name Folder>
+|   |           `-- User <Create Name Folder>
+|   |              |-- UserController.php <Create Name File.php>
+|   |           `-- UserAddress 
+|   |              |-- UserAddressController.php
+|   | 
+|   |        `-- Contact <Single Name Folder>
+|   |           |-- ContactController.php <Create Name File.php>
+```
+
+```
 |-- app
 |   |-- Console
 |   |   `-- Commands
@@ -195,6 +214,6 @@
 ```
 
 ### Special naming conventions
- What      | How                                                                                                                                     |
------------|-----------------------------------------------------------------------------------------------------------------------------------------|
- Migration | create_tableName_table<br />add_columnName_to_tablename_table<br />update_columnName_to_tablename_table<br />remove_columnName_from_tablename_table<br />drop_tableName_table |
+| What      | How                                                                                                                                                                           |
+|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Migration | create_tableName_table<br />add_columnName_to_tablename_table<br />update_columnName_to_tablename_table<br />remove_columnName_from_tablename_table<br />drop_tableName_table |
